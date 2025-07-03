@@ -79,15 +79,15 @@ The application will run on http://localhost:3000
 
 ### Bulk Upload
 
-1. Click "Download Sample Template" to get the correct format
-2. Fill in the Excel file with user data
-   2.1. Make sure your Excel file has these exact column headers:
-   •  "First Name" (not "FirstName" or "firstname")
-   •  "Last Name" (not "LastName" or "lastname")
-   •  "Email"
-   •  "Phone Number" (with a space between "Phone" and "Number")
-   •  "PAN Number" (with a space between "PAN" and "Number")
-3. Upload the file using the "Upload" button
+1. Click "Download Sample Template" to get the correct format  
+2. Fill in the Excel file with user data  
+   - **Make sure your Excel file has these exact column headers:**
+     - `First Name` (not `FirstName` or `firstname`)
+     - `Last Name` (not `LastName` or `lastname`)
+     - `Email`
+     - `Phone Number` (with a space between `Phone` and `Number`)
+     - `PAN Number` (with a space between `PAN` and `Number`)
+3. Upload the file using the "Upload" button  
 4. If there are validation errors, they will be displayed
 
 ### Adding a User
