@@ -1,0 +1,7 @@
+{
+  "name": "User Management System",
+  "short_name": "User Management",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff"
+}
