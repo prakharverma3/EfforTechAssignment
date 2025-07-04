@@ -13,7 +13,7 @@ const initialFormState = {
 const UserForm = ({ onSubmit, selectedUser, isLoading }) => {
   const [formData, setFormData] = useState(initialFormState);
   const [validated, setValidated] = useState(false);
-  const [showPAN, setShowPAN] = useState(false);
+  const [showPAN, setShowPAN] = useState(false); // Default to hidden PAN
   
   // Update form when selected user changes
   useEffect(() => {
@@ -76,11 +76,11 @@ const UserForm = ({ onSubmit, selectedUser, isLoading }) => {
     return panRegex.test(pan);
   };
 
-  // Mask the PAN number
-  const maskPAN = (pan) => {
-    if (!pan) return '';
-    return showPAN ? pan : pan.replace(/./g, '•');
-  };
+  // This function is not needed as we're using password type input for masking
+  // const maskPAN = (pan) => {
+  //   if (!pan) return '';
+  //   return showPAN ? pan : pan.replace(/./g, '•');
+  // };
 
   return (
     <Card className="user-form mb-4">
@@ -157,7 +157,7 @@ const UserForm = ({ onSubmit, selectedUser, isLoading }) => {
             <Form.Label>PAN Number*</Form.Label>
             <div className="position-relative">
               <Form.Control
-                type="text"
+                type={showPAN ? "text" : "password"}
                 name="panNumber"
                 value={formData.panNumber}
                 onChange={handleChange}
@@ -166,7 +166,7 @@ const UserForm = ({ onSubmit, selectedUser, isLoading }) => {
                 pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"
                 maxLength="10"
               />
-              <div className="eye-icon" onClick={togglePANVisibility}>
+              <div className="eye-icon" onClick={togglePANVisibility} style={{ cursor: 'pointer', position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)' }}>
                 {showPAN ? <FaEyeSlash /> : <FaEye />}
               </div>
             </div>

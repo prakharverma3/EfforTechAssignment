@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
 import { Table, Card, Button, Form } from 'react-bootstrap';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const UserList = ({ users, onEdit, onDelete, isLoading }) => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [showPANMap, setShowPANMap] = useState({});
+
+  const togglePANVisibility = (userId) => {
+    setShowPANMap(prevState => ({
+      ...prevState,
+      [userId]: !prevState[userId]
+    }));
+  };
 
   const filteredUsers = users.filter((user) => {
     const term = searchTerm.toLowerCase();
@@ -48,7 +57,14 @@ const UserList = ({ users, onEdit, onDelete, isLoading }) => {
                   <td>{user.firstName} {user.lastName}</td>
                   <td>{user.email}</td>
                   <td>{user.phoneNumber}</td>
-                  <td>{user.panNumber}</td>
+<td>
+    {showPANMap[user.id] ?
+      user.panNumber :
+      `${user.panNumber.slice(0, 4)}••••${user.panNumber.slice(-4)}`}
+    <Button variant="link" onClick={() => togglePANVisibility(user.id)}>
+      {showPANMap[user.id] ? <FaEyeSlash /> : <FaEye />}
+    </Button>
+  </td>
                   <td>
                     <Button size="sm" onClick={() => onEdit(user)} disabled={isLoading}>
                       Edit
